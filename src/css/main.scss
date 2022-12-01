@@ -21,97 +21,106 @@ img {
 }
 
 $mediaMinWidth_desktop_md: 992px;
+$footerMaxHeight: 2.5rem;
 
 body {
 	font-family: 'Lexend Deca', sans-serif;
 	background: var(--clr-bodybackground-headings-buttons);
+	overflow: hidden;
 }
 
 .hidden-page-heading {
 	display: none;
 }
 
-.container {
-	height: calc(100vh - 2.5rem);
-	max-width: 335px;
-	margin-inline: auto;
-	display: grid;
-	place-content: center;
-
-	@media screen and (min-width: $mediaMinWidth_desktop_md) {
-		max-width: $mediaMinWidth_desktop_md;
-	}
-}
-
 main {
-	border-radius: 0.5rem;
-	overflow-y: auto;
-	display: grid;
+	overflow: auto;
 
-	@media screen and (min-width: $mediaMinWidth_desktop_md) {
-		grid-template-columns: 1fr 1fr 1fr;
+	.container {
+		height: calc(100vh - $footerMaxHeight);
+		min-width: 335px;
+		max-width: 335px;
+		margin-inline: auto;
+		display: grid;
+		align-items: center;
+
+		@media screen and (min-width: $mediaMinWidth_desktop_md) {
+			max-width: $mediaMinWidth_desktop_md;
+		}
+
+		.inner-container {
+			.panels {
+				overflow: hidden;
+				border-radius: 0.5rem;
+				display: grid;
+
+				@media screen and (min-width: $mediaMinWidth_desktop_md) {
+					grid-template-columns: 1fr 1fr 1fr;
+				}
+
+				.panel {
+					display: grid;
+					gap: 1.8rem;
+					padding: 3.2rem;
+
+					&__heading {
+						font-size: 2.5rem;
+						font-weight: bold;
+						font-family: 'Big Shoulders Display', cursive;
+						text-transform: uppercase;
+						color: var(--clr-bodybackground-headings-buttons);
+					}
+
+					p {
+
+						color: var(--clr-paragraphs);
+						font-size: 0.9rem;
+						line-height: 1.7;
+
+						@media screen and (min-width: $mediaMinWidth_desktop_md) {
+							font-size: 1rem;
+						}
+					}
+
+					&__button {
+						display: flex;
+						justify-content: center;
+						border-radius: 5rem;
+						width: fit-content;
+						padding: 0.9rem 2rem;
+						background: var(--clr-bodybackground-headings-buttons);
+						mix-blend-mode: screen; // Make "black" on button transparent to show background of underlying element.
+						cursor: pointer;
+
+						@media screen and (min-width: $mediaMinWidth_desktop_md) {
+							margin-top: 4rem;
+						}
+
+						&:hover {
+							background: #000;
+							color: var(--clr-bodybackground-headings-buttons);
+							border: 0.15rem solid var(--clr-bodybackground-headings-buttons);
+							padding-block: 0.75rem;
+						}
+					}
+
+					&--sedans {
+						background: var(--clr-orange);
+					}
+
+					&--suvs {
+						background: var(--clr-dark-cyan);
+					}
+
+					&--luxury {
+						background: var(--clr-dark-dark-cyan);
+					}
+				}
+			}
+		}
 	}
 }
 
-.panel {
-	display: grid;
-	gap: 1.8rem;
-
-	padding: 3.2rem;
-
-	&__heading {
-		font-size: 2.5rem;
-		font-weight: bold;
-		font-family: 'Big Shoulders Display', cursive;
-		text-transform: uppercase;
-		color: var(--clr-bodybackground-headings-buttons);
-	}
-
-	p {
-
-		color: var(--clr-paragraphs);
-		font-size: 0.9rem;
-		line-height: 1.7;
-
-		@media screen and (min-width: $mediaMinWidth_desktop_md) {
-			font-size: 1rem;
-		}
-	}
-
-	&__button {
-		display: flex;
-		justify-content: center;
-		border-radius: 5rem;
-		width: fit-content;
-		padding: 0.9rem 2rem;
-		background: var(--clr-bodybackground-headings-buttons);
-		mix-blend-mode: screen; // Make "black" on button transparent to show background of underlying element.
-		cursor: pointer;
-
-		@media screen and (min-width: $mediaMinWidth_desktop_md) {
-			margin-top: 4rem;
-		}
-
-		&:hover {
-			background: #000;
-			color: var(--clr-bodybackground-headings-buttons);
-			border: 0.15rem solid var(--clr-bodybackground-headings-buttons);
-			padding-block: 0.75rem;
-		}
-	}
-
-	&--sedans {
-		background: var(--clr-orange);
-	}
-
-	&--suvs {
-		background: var(--clr-dark-cyan);
-	}
-
-	&--luxury {
-		background: var(--clr-dark-dark-cyan);
-	}
-}
 
 footer {
 	position: absolute;
@@ -122,6 +131,7 @@ footer {
 	background: #fff;
 	padding: 0.25rem;
 	text-align: center;
+	max-height: $footerMaxHeight;
 
 	a {
 		color: blue;
