@@ -89,6 +89,7 @@ main {
 						width: fit-content;
 						padding: 0.9rem 2rem;
 						background: var(--clr-bodybackground-headings-buttons);
+						color: #000;
 						mix-blend-mode: screen; // Make "black" on button transparent to show background of underlying element.
 						text-decoration: none;
 
