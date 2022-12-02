@@ -90,7 +90,7 @@ main {
 						padding: 0.9rem 2rem;
 						background: var(--clr-bodybackground-headings-buttons);
 						mix-blend-mode: screen; // Make "black" on button transparent to show background of underlying element.
-						cursor: pointer;
+						text-decoration: none;
 
 						@media screen and (min-width: $mediaMinWidth_desktop_md) {
 							margin-top: 4rem;
